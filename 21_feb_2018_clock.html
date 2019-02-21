@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function startTime() {
+  var today = new Date();
+  
+  //week
+  
+  var weekday = new Array(7);
+  weekday[0] = "Sunday";
+  weekday[1] = "Monday";
+  weekday[2] = "Tuesday";
+  weekday[3] = "Wednesday";
+  weekday[4] = "Thursday";
+  weekday[5] = "Friday";
+  weekday[6] = "Saturday";
+  var n = weekday[today.getDay()];
+  
+  //date
+  
+  var monthNames = new Array(12);
+  monthNames[0] ="January";
+  monthNames[1] ="February";
+  monthNames[3] ="March";
+  monthNames[4] ="April";
+  monthNames[5] ="May";
+  monthNames[6] ="June";
+  monthNames[7] ="July";
+  monthNames[8] ="August";
+  monthNames[9]="September";
+  monthNames[10]="October";
+  monthNames[11]="November";
+  monthNames[12]="December";
+  var dateObj = new Date();
+  var date = dateObj.getDate();
+  var month = monthNames[dateObj.getMonth()]
+  var year = dateObj.getFullYear();
+ 
+  //Time
+  
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+   document.getElementById("date").innerHTML = n + " " + date + "-" + month + "-" + year + " " + h + ":" + m + ":" + s;
+  
+  var t = setTimeout(startTime, 1000);
+}
+
+
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+</head>
+
+<body onload="startTime()">
+
+
+
+<div id="date"></div>
+
+<style type="text/css">
+	#date {
+		text-align: center;
+		padding-top: 20px;
+		font-weight: bolder;
+		font-size: 30px;
+	}
+</style>
+
+</body>
+</html>
